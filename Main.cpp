@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Header/Core/GameWindowManager.h"
+#include "Header/Event/EventManager.h"
 
 int main()
 {
@@ -23,11 +24,13 @@ int main()
     }*/
 
     Core::GameWindowManager gameWindowManager;
+    EventSpace::EventManager eventManager;
 
     gameWindowManager.Initialize();
 
     while (gameWindowManager.IsGameRunning())
     {
+        eventManager.PollEvents(gameWindowManager.GetGameWindow());
         gameWindowManager.render();
     }
 
