@@ -1,37 +1,22 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Header/Core/GameWindowManager.h"
-#include "Header/Event/EventManager.h"
+#include "../../Header/Core/GameLoop.h"
+using namespace sf;
+using namespace Core;
 
 int main()
 {
-    /*sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    // Step 1: Create the GameLoop object
+    GameLoop* game_loop_manager = new GameLoop();
 
-    while (window.isOpen())
+    // Step 2: Initialize the game environment
+    game_loop_manager->Initialize();
+
+    // Step 3: Run the game loop
+    while (game_loop_manager->IsGameRunning())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }*/
-
-    Core::GameWindowManager gameWindowManager;
-    EventSpace::EventManager eventManager;
-
-    gameWindowManager.Initialize();
-
-    while (gameWindowManager.IsGameRunning())
-    {
-        eventManager.PollEvents(gameWindowManager.GetGameWindow());
-        gameWindowManager.render();
+        game_loop_manager->PollEvent();
+        game_loop_manager->Update();
+        game_loop_manager->Render();
     }
 
     return 0;

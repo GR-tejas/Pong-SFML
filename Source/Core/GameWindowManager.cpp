@@ -20,17 +20,18 @@ namespace Core
 		return gameWindow->isOpen();
 	}
 
-	void GameWindowManager::render()
-	{
-		gameWindow->clear(Color(200, 50, 50, 255));
-
-		//gameWindow->draw();
-
-		gameWindow->display();
-	}
-
 	RenderWindow* GameWindowManager::GetGameWindow()
 	{
 		return gameWindow;
+	}
+
+	void GameWindowManager::ClearGameWindow()
+	{
+		gameWindow->clear();
+	}
+
+	void GameWindowManager::DisplayGameWindow()
+	{
+		return gameWindow->display();
 	}
 }
