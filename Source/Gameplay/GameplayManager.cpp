@@ -1,8 +1,10 @@
 #include"../../Header/Gameplay/GameplayManager.h"
+#include"../../Header/Gameplay/Boundary/Boundary.h"
 
 namespace Gameplay
 {
-    GameplayManager::GameplayManager() {
+    GameplayManager::GameplayManager() 
+    {
         Initialize();
     }
 
@@ -12,7 +14,9 @@ namespace Gameplay
         event_manager = manager;
     }
 
-    void GameplayManager::Initialize() {
+    void GameplayManager::Initialize() 
+    {
+        boundary = new Boundary();
         ball = new Ball();
         player1 = new Paddle(player1_position_x, player1_position_y);
         player2 = new Paddle(player2_postion_x, player2_postion_y);
@@ -20,6 +24,7 @@ namespace Gameplay
 
     void GameplayManager::Render(RenderWindow* game_window)
     {
+        boundary->Render(game_window);
         ball->Render(game_window);
         player1->Render(game_window);
         player2->Render(game_window);

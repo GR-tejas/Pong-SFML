@@ -1,7 +1,9 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include"../../Header/Event/EventManager.h"
-#include "Paddle/Paddle.h"
-#include "Ball/Ball.h"
+#include"Boundary/Boundary.h"
+#include"Paddle/Paddle.h"
+#include"Ball/Ball.h"
 
 using namespace EventSpace;
 
@@ -18,6 +20,7 @@ namespace Gameplay
 		float player2_postion_x = 1210.0f;
 		float player2_postion_y = 300.0f;
 
+		Boundary* boundary;
 		Ball* ball;
 		Paddle* player1;
 		Paddle* player2;
