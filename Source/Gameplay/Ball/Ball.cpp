@@ -4,13 +4,13 @@ namespace Gameplay
 {
 	Ball::Ball()
 	{
-		loadTexture();
-		initializeVariables();
+		LoadTexture();
+		InitializeVariables();
 	}
 
 	void Ball::Update()
 	{
-
+		Move();
 	}
 
 	void Ball::Render(RenderWindow* game_window)
@@ -18,7 +18,7 @@ namespace Gameplay
 		game_window->draw(pong_ball_sprite);
 	}
 
-	void Ball::loadTexture()
+	void Ball::LoadTexture()
 	{
 		if (!pong_ball_texture.loadFromFile(texture_path))
 		{
@@ -26,10 +26,15 @@ namespace Gameplay
 		}
 	}
 
-	void Ball::initializeVariables()
+	void Ball::InitializeVariables()
 	{
-		pong_ball_sprite.setTexture(pong_ball_texture);  // Link texture to sprite
-		pong_ball_sprite.setScale(scale_x, scale_y);     // Set size
-		pong_ball_sprite.setPosition(position_x, position_y); // Set position
+		pong_ball_sprite.setTexture(pong_ball_texture);
+		pong_ball_sprite.setScale(scale_x, scale_y);
+		pong_ball_sprite.setPosition(position_x, position_y);
+	}
+
+	void Ball::Move()
+	{
+		pong_ball_sprite.move(velocity); //error
 	}
 }

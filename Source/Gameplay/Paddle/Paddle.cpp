@@ -13,8 +13,20 @@ namespace Gameplay
         game_window->draw(paddle_sprite);
     }
 
-    void Paddle::Update()
+    void Paddle::Update(bool move_up_key_pressed, bool move_down_key_pressed)
     {
+        MovePaddle(move_up_key_pressed, move_down_key_pressed);
+    }
 
+    void Paddle::MovePaddle(bool move_up_key_pressed, bool move_down_key_pressed)
+    {
+        if (move_up_key_pressed)
+        {
+            paddle_sprite.move(0, -paddleSpeed);
+        }
+        if (move_down_key_pressed)
+        {
+            paddle_sprite.move(0, paddleSpeed);
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace Gameplay
     class Ball
     {
     private:
+        float ball_speed = 0.1f;
+        Vector2f velocity = Vector2f(ball_speed, ball_speed);
+
         Texture pong_ball_texture;
         const string texture_path = "Assets/Textures/Ball.png";
         Sprite pong_ball_sprite;
@@ -19,8 +22,9 @@ namespace Gameplay
         const float position_x = 615.0f;
         const float position_y = 335.0f;
 
-        void loadTexture();
-        void initializeVariables();
+        void LoadTexture();
+        void InitializeVariables();
+        void Move();
 
     public:
         Ball();
