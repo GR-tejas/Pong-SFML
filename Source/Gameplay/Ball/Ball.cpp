@@ -8,9 +8,10 @@ namespace Gameplay
 		InitializeVariables();
 	}
 
-	void Ball::Update()
+	void Ball::Update(Paddle* player1, Paddle* player2)
 	{
 		Move();
+		OnCollision(player1, player2);
 	}
 
 	void Ball::Render(RenderWindow* game_window)
@@ -35,6 +36,63 @@ namespace Gameplay
 
 	void Ball::Move()
 	{
-		pong_ball_sprite.move(velocity); //error
+		pong_ball_sprite.move(velocity);
+	}
+
+	void Ball::HandlePaddleCollision(Paddle* player1, Paddle* player2)
+	{
+		const RectangleShape& player1Paddle = player1->GetPaddleSprite();
+		const RectangleShape& player2Paddle = player2->GetPaddleSprite();
+
+		FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
+		FloatRect player1_bounds = player1Paddle.getGlobalBounds();
+		FloatRect player2_bounds = player2Paddle.getGlobalBounds();
+
+		if (ball_bounds.intersects(player1_bounds) && velocity.x < 0)
+		{
+			velocity.x = -velocity.x;
+		}
+		if (ball_bounds.intersects(player2_bounds) && velocity.x > 0)
+		{
+			velocity.x = -velocity.x;
+		}
+	}
+
+	void Ball::HandleBoudaryCollision()
+	{
+		FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
+
+		if ((ball_bounds.top <= top_boundary && velocity.y < 0) ||
+			(ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0))
+		{
+			velocity.y = -velocity.y;
+		}
+	}
+
+	void Ball::HandleOutofBoundCollision()
+	{
+		FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
+
+		if (ball_bounds.left <= left_boundary)
+		{
+			Reset();        // Player 2 scores!
+		}
+		else if (ball_bounds.left + ball_bounds.width >= right_boundary)
+		{
+			Reset();        // Player 1 scores!
+		}
+	}
+
+	void Ball::Reset()
+	{
+		pong_ball_sprite.setPosition(center_position_x, center_position_y);
+		velocity = Vector2f(ball_speed, ball_speed);
+	}
+
+	void Ball::OnCollision(Paddle* player1, Paddle* player2)
+	{
+		HandleBoudaryCollision();
+		HandlePaddleCollision(player1, player2);
+		HandleOutofBoundCollision();
 	}
 }

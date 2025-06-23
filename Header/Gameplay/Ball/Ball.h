@@ -22,14 +22,27 @@ namespace Gameplay
         const float position_x = 615.0f;
         const float position_y = 335.0f;
 
+        const float top_boundary = 20.0f;
+        const float bottom_boundary = 700.0f;
+
+        const float left_boundary = 0.0f;
+        const float right_boundary = 1280.0f;
+
+        const float center_position_x = 615.0f;
+        const float center_position_y = 325.0f;
+
         void LoadTexture();
         void InitializeVariables();
         void Move();
 
     public:
         Ball();
-
-        void Update();
+        void HandlePaddleCollision(Paddle* player1, Paddle* player2);
+        void HandleBoudaryCollision();
+        void HandleOutofBoundCollision();
+        void OnCollision(Paddle* player1, Paddle* player2);
+        void Reset();
+        void Update(Paddle* player1, Paddle* player2);
         void Render(RenderWindow* game_window);
     };
 }
