@@ -8,9 +8,9 @@ namespace Gameplay
 		InitializeVariables();
 	}
 
-	void Ball::Update(Paddle* player1, Paddle* player2)
+	void Ball::Update(Paddle* player1, Paddle* player2, TimeService* timeService)
 	{
-		Move();
+		Move(timeService);
 		OnCollision(player1, player2);
 	}
 
@@ -34,9 +34,11 @@ namespace Gameplay
 		pong_ball_sprite.setPosition(position_x, position_y);
 	}
 
-	void Ball::Move()
+	void Ball::Move(TimeService* time_service)
 	{
-		pong_ball_sprite.move(velocity);
+		pong_ball_sprite.move(velocity * (time_service->GetDeltaTime() * speed_multiplier));
+		std::cout << time_service->GetDeltaTime()<<"\n";
+		//pong_ball_sprite.move(velocity.x * speed_multiplier, velocity.y * speed_multiplier);
 	}
 
 	void Ball::HandlePaddleCollision(Paddle* player1, Paddle* player2)
@@ -75,11 +77,11 @@ namespace Gameplay
 
 		if (ball_bounds.left <= left_boundary)
 		{
-			Reset();        // Player 2 scores!
+			Reset();
 		}
 		else if (ball_bounds.left + ball_bounds.width >= right_boundary)
 		{
-			Reset();        // Player 1 scores!
+			Reset();
 		}
 	}
 

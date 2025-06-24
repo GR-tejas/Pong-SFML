@@ -4,10 +4,12 @@ namespace Core
 {
 	void GameLoop::Initialize()
 	{
+		time_service = new TimeService();
 		game_window_manager = new GameWindowManager();
 		event_manager = new EventManager();
-		gameplay_manager = new GameplayManager(event_manager);
+		gameplay_manager = new GameplayManager(event_manager, time_service);
 
+		time_service->Initialize();
 		game_window_manager->Initialize();
 	}
 
@@ -23,7 +25,8 @@ namespace Core
 
 	void GameLoop::Update()
 	{
-		gameplay_manager->Update();
+		time_service->Update();
+		gameplay_manager->Update(time_service);
 	}
 
 	void GameLoop::Render()

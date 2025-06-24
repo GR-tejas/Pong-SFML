@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/Gameplay/Paddle/Paddle.h"
+#include <iostream>
+#include"../../../Header/Utility/TimeService.h"
+#include"../Paddle/Paddle.h"
 using namespace sf;
 using namespace std;
 
@@ -9,7 +11,8 @@ namespace Gameplay
     class Ball
     {
     private:
-        float ball_speed = 0.1f;
+        float ball_speed = 50.0f;
+        int speed_multiplier = 10;
         Vector2f velocity = Vector2f(ball_speed, ball_speed);
 
         Texture pong_ball_texture;
@@ -33,7 +36,7 @@ namespace Gameplay
 
         void LoadTexture();
         void InitializeVariables();
-        void Move();
+        void Move(TimeService* timeService);
 
     public:
         Ball();
@@ -42,7 +45,7 @@ namespace Gameplay
         void HandleOutofBoundCollision();
         void OnCollision(Paddle* player1, Paddle* player2);
         void Reset();
-        void Update(Paddle* player1, Paddle* player2);
+        void Update(Paddle* player1, Paddle* player2, TimeService* timeService);
         void Render(RenderWindow* game_window);
     };
 }

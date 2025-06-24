@@ -1,11 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include"../../Header/Event/EventManager.h"
+#include"../../Header/Utility/TimeService.h"
 #include"Boundary/Boundary.h"
 #include"Paddle/Paddle.h"
 #include"Ball/Ball.h"
 
 using namespace EventSpace;
+using namespace Utility;
 
 namespace Gameplay
 {
@@ -24,13 +26,14 @@ namespace Gameplay
 		Ball* ball;
 		Paddle* player1;
 		Paddle* player2;
+		TimeService* time_service;
 
 		void Initialize();
 
 	public:
-		GameplayManager(EventManager* manager);
-		GameplayManager();
-		void Update();
+		GameplayManager(EventManager* manager, TimeService* time_service);
+		//GameplayManager();
+		void Update(TimeService* timeService);
 		void Render(RenderWindow* game_window);
 	};
 }

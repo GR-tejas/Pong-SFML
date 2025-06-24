@@ -1,4 +1,4 @@
-#include"../Header/Utility/TimeService.h"
+#include"../../Header/Utility/TimeService.h"
 
 namespace Utility
 {
@@ -34,6 +34,6 @@ namespace Utility
 
     float TimeService::GetDeltaTime()
     {
-        return delta_time;
+        return delta_time; //read access violation here.
     }
 }

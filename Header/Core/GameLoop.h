@@ -3,6 +3,7 @@
 #include "../../Header/Core/GameWindowManager.h"
 #include "../../Header/Event/EventManager.h"
 #include "../../Header/Gameplay/GameplayManager.h"
+#include "../../Header/Utility/TimeService.h"
 
 using namespace sf;
 using namespace Core;
@@ -18,6 +19,7 @@ namespace Core
 		GameWindowManager* game_window_manager;
 		EventManager* event_manager;
 		GameplayManager* gameplay_manager;
+		TimeService* time_service;
 
 	public:
 		void Initialize();
