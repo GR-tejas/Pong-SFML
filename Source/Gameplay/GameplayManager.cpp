@@ -16,6 +16,7 @@ namespace Gameplay
         ball = new Ball();
         player1 = new Paddle(player1_position_x, player1_position_y);
         player2 = new Paddle(player2_postion_x, player2_postion_y);
+        ui_service = new UIService;
     }
 
     void GameplayManager::Render(RenderWindow* game_window)
@@ -24,6 +25,7 @@ namespace Gameplay
         ball->Render(game_window);
         player1->Render(game_window);
         player2->Render(game_window);
+        ui_service->Render(game_window);
     }
 
     void GameplayManager::Update(TimeService* timeService)

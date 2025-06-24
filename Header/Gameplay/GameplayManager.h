@@ -2,12 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include"../../Header/Event/EventManager.h"
 #include"../../Header/Utility/TimeService.h"
+#include"../../Header/UI/UIService.h"
 #include"Boundary/Boundary.h"
 #include"Paddle/Paddle.h"
 #include"Ball/Ball.h"
 
 using namespace EventSpace;
 using namespace Utility;
+using namespace UI;
 
 namespace Gameplay
 {
@@ -27,6 +29,7 @@ namespace Gameplay
 		Paddle* player1;
 		Paddle* player2;
 		TimeService* time_service;
+		UIService* ui_service;
 
 		void Initialize();
 

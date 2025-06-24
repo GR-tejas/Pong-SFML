@@ -37,8 +37,6 @@ namespace Gameplay
 	void Ball::Move(TimeService* time_service)
 	{
 		pong_ball_sprite.move(velocity * (time_service->GetDeltaTime() * speed_multiplier));
-		std::cout << time_service->GetDeltaTime()<<"\n";
-		//pong_ball_sprite.move(velocity.x * speed_multiplier, velocity.y * speed_multiplier);
 	}
 
 	void Ball::HandlePaddleCollision(Paddle* player1, Paddle* player2)
