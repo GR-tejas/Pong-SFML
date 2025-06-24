@@ -33,4 +33,20 @@ namespace UI
 		game_window->draw(left_score_text);
 		game_window->draw(right_score_text);
 	}
+
+	string UIService::FormatScore(int score)
+	{
+		return (score < 10 ? "0" : "") + to_string(score);
+	}
+
+	void UIService::IncrementPlayerScore(int player_score)
+	{
+		player_score++;
+	}
+
+	void UIService::Update()
+	{
+		left_score_text.setString(FormatScore(player1_score));
+		right_score_text.setString(FormatScore(player2_score));
+	}
 }

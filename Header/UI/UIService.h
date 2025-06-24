@@ -35,8 +35,10 @@ namespace UI
 		UIService();
 		void LoadFontTexture();
 		void CreateScoreText(Text& score_text, float score_position_x);
+		string FormatScore(int score);
+		void IncrementPlayerScore(int player_score);
 
 		void Render(RenderWindow* game_window);
-		//void Update();
+		void Update();
 	};
 }
