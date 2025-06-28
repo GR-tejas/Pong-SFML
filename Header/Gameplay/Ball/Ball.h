@@ -1,8 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include"../../../Header/Utility/TimeService.h"
+#include"../../Utility/TimeService.h"
+#include"../../Sound/SoundManager.h"
 #include"../Paddle/Paddle.h"
+
+using namespace SoundSpace;
 using namespace sf;
 using namespace std;
 

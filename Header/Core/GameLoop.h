@@ -1,9 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/Core/GameWindowManager.h"
-#include "../../Header/Event/EventManager.h"
-#include "../../Header/Gameplay/GameplayManager.h"
-#include "../../Header/Utility/TimeService.h"
+#include "../Core/GameWindowManager.h"
+#include "../Event/EventManager.h"
+#include "../Gameplay/GameplayManager.h"
+#include "../Utility/TimeService.h"
+#include"../Sound/SoundManager.h"
 
 using namespace sf;
 using namespace Core;
@@ -20,6 +21,7 @@ namespace Core
 		EventManager* event_manager;
 		GameplayManager* gameplay_manager;
 		TimeService* time_service;
+		SoundManager* sound_manager;
 
 	public:
 		void Initialize();

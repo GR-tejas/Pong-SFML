@@ -8,8 +8,10 @@ namespace Core
 		game_window_manager = new GameWindowManager();
 		event_manager = new EventManager();
 		gameplay_manager = new GameplayManager(event_manager, time_service);
+		sound_manager = new SoundManager();
 
 		time_service->Initialize();
+		sound_manager->Initialize();
 		game_window_manager->Initialize();
 	}
 
