@@ -35,7 +35,8 @@ namespace Gameplay
 
 	public:
 		GameplayManager(EventManager* manager, TimeService* time_service);
-		//GameplayManager();
+		void UpdateScore();
+		void ResetPlayers();
 		void Update(TimeService* timeService);
 		void Render(RenderWindow* game_window);
 	};

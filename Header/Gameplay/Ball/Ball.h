@@ -34,17 +34,33 @@ namespace Gameplay
         const float center_position_x = 615.0f;
         const float center_position_y = 325.0f;
 
+        bool had_left_collison = false;
+        bool had_right_collison = false;
+
         void LoadTexture();
         void InitializeVariables();
         void Move(TimeService* timeService);
 
     public:
         Ball();
-        void HandlePaddleCollision(Paddle* player1, Paddle* player2);
+
+        /*bool isLeftCollisionOccurred();
+        void updateLeftCollisionState(bool value);
+
+        bool isRightCollisionOccurred();
+        void updateRightCollisionState(bool value);*/
+
+        bool IsCollisionOccurred(bool isLeft);
+        void UpdateCollisionState(bool value, bool isLeft);
+
         void HandleBoudaryCollision();
         void HandleOutofBoundCollision();
+
+        void HandlePaddleCollision(Paddle* player1, Paddle* player2);
         void OnCollision(Paddle* player1, Paddle* player2);
+
         void Reset();
+
         void Update(Paddle* player1, Paddle* player2, TimeService* timeService);
         void Render(RenderWindow* game_window);
     };

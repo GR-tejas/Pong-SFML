@@ -36,6 +36,30 @@ namespace Gameplay
             event_manager->IsKeyPressed(Keyboard::S), timeService);
         player2->Update(event_manager->IsKeyPressed(Keyboard::Up),
             event_manager->IsKeyPressed(Keyboard::Down), timeService);
+
+        UpdateScore();
+        ui_service->Update();
     }
 
+    void GameplayManager::UpdateScore() 
+    {
+        if (ball->IsCollisionOccurred(true)) 
+        {
+            ui_service->IncrementPlayerScore(true);
+            ball->UpdateCollisionState(false, true);
+            ResetPlayers();
+        }
+
+        if (ball->IsCollisionOccurred(false)) {
+            ui_service->IncrementPlayerScore(false);
+            ball->UpdateCollisionState(false, false);
+            ResetPlayers();
+        }
+    }
+
+    void GameplayManager::ResetPlayers() 
+    {
+        player1->Reset(player1_position_x, player1_position_y);
+        player2->Reset(player2_postion_x, player2_postion_y);
+    }
 }

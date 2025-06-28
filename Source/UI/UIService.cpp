@@ -39,9 +39,9 @@ namespace UI
 		return (score < 10 ? "0" : "") + to_string(score);
 	}
 
-	void UIService::IncrementPlayerScore(int player_score)
+	void UIService::IncrementPlayerScore(bool isP1)
 	{
-		player_score++;
+		isP1 ? player1_score++ : player2_score++;
 	}
 
 	void UIService::Update()

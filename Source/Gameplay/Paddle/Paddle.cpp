@@ -34,4 +34,9 @@ namespace Gameplay
             paddle_sprite.move(0, paddleSpeed * time_service->GetDeltaTime() * speedMultiplier);
         }
     }
+
+    void Paddle::Reset(float position_x, float position_y)
+    {
+        paddle_sprite.setPosition(position_x, position_y);
+    }
 }

@@ -29,6 +29,6 @@ namespace Gameplay
 		Paddle(float position_x, float position_y);
 		RectangleShape GetPaddleSprite();
 		void Render(RenderWindow* game_window);
-		//void Reset(float position_x, float position_y);
+		void Reset(float position_x, float position_y);
 	};
 }
