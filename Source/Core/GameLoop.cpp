@@ -13,6 +13,8 @@ namespace Core
 		time_service->Initialize();
 		sound_manager->Initialize();
 		game_window_manager->Initialize();
+
+		SoundManager::PlayBackgroundMusic();
 	}
 
 	bool GameLoop::IsGameRunning()
